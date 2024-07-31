@@ -1,0 +1,24 @@
+<model-viewer src="OIDO MODEL 01.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls poster="poster.webp" shadow-intensity="1.05" exposure="0.4" camera-orbit="484.6deg 24.85deg 461m" field-of-view="30deg">
+    <button class="Hotspot" slot="hotspot-1" data-position="17.470008615914413m 8.661964404034263m -16.10005082745682m" data-normal="0.6899942807675925m 0.36908471047247293m -0.622643051036036m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">1</div>
+    </button><button class="Hotspot" slot="hotspot-2" data-position="30.440248970924593m 18.705619254417556m -4.073367294594981m" data-normal="-0.04993577504836258m 0.8232957615095563m 0.5654118034235924m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">2</div>
+    </button><button class="Hotspot" slot="hotspot-7" data-position="-38.16103692250768m 19.885404012016615m -4.518219247598208m" data-normal="0.07922414508080776m 0.8823288929591818m 0.46391729810995397m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">4</div>
+    </button><button class="Hotspot" slot="hotspot-8" data-position="-53.86913580189392m 10.338195329377987m -19.940708065064456m" data-normal="0.482495854785247m 0.4079187789269789m -0.7751129078487706m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">5</div>
+    </button><button class="Hotspot" slot="hotspot-9" data-position="40.15892642059894m 19.274477324507316m -18.129284632640985m" data-normal="-0.24590391889269217m -0.18609732005100327m -0.9512618199754739m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">6</div>
+    </button><button class="Hotspot" slot="hotspot-10" data-position="26.15596844296666m 19.579168147398732m -10.95596040165098m" data-normal="-0.3214261479346299m 0.6979096464360159m -0.640005747501896m" data-visibility-attribute="visible">
+        <div class="HotspotAnnotation">3</div>
+    </button>
+    <div class="progress-bar hide" slot="progress-bar">
+        <div class="update-bar"></div>
+    </div>
+    <button slot="ar-button" id="ar-button">
+        View in your space
+    </button>
+    <div id="ar-prompt">
+        <img src="https://modelviewer.dev/shared-assets/icons/hand.png">
+    </div>
+</model-viewer>

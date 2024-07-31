@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>&lt;model-viewer&gt; template</title>
+  <meta charset="utf-8">
+  <meta name="description" content="&lt;model-viewer&gt; template">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link type="text/css" href="./styles.css" rel="stylesheet"/>
+   
+  <!-- OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
+
+  <script src="https://unpkg.com/event-target@latest/min.js"></script>
+  <script src="https://unpkg.com/resize-observer-polyfill@1.5.0/dist/ResizeObserver.global.js"></script>
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
+  <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+
+ 
+  <script src="https://cdn.jsdelivr.net/npm/focus-visible@5.0.2/dist/focus-visible.js" defer></script>
+
+</head>
+
+<body>
+  <!-- <model-viewer> HTML element -->
+  <model-viewer id="animation-demo" poster-dismissed poster="poster.webp" reveal="manual" src="OIDO MODEL 01.glb"
+    ios-src="/App demo 02/Beating heart.gltf" ar ar-modes="scene-viewer quick-look" shadow-intensity="1.05" exposure="0.65" Camera-orbit="43.48deg 61.29deg 492m" field-of-view="30deg" field-of-view="30deg" camera-controls
+    exposure="1" loading="lazy">
+
+
+    <div id="lazy-load-poster" slot="poster"></div>
+    <div id="button-load" slot="poster">
+
+      <div id="inicio01">
+        <h3>Click para interactuar en 3D</h3>
+      </div>
+
+      <img id="click01" src="click01.png">
+
+      <div class="container4">
+        <div class="cube">
+          <div class="side side1"></div>
+          <div class="side side2"></div>
+          <div class="side side3"></div>
+          <div class="side side4"></div>
+          <div class="side side5"></div>
+          <div class="side side6"></div>
+        </div>
+      </div>
+
+      <div class="container container5">
+      </div>
+    </div>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div class="loader"></div>
+
+    
+    <div class="titulo_boton">
+      Información adicional
+      <a style='cursor: pointer;' onClick="muestra_oculta('contenido')" class="boton_mostrar">Mostrar /
+        Ocultar</a>
+    </div>
+
+    <script>
+      function muestra_oculta(id) {
+        if (document.getElementById) { //se obtiene el id
+          var el = document.getElementById(id); //se define la variable "el" igual a nuestro div
+          el.style.display = (el.style.display == 'none') ? 'block' : 'none'; //damos un atributo display:none que oculta el div
+        }
+      }
+      window.onload = function () {/*hace que se cargue la función lo que predetermina que div estará oculto hasta llamar a la función nuevamente*/
+        muestra_oculta('contenido');/* "contenido_a_mostrar" es el nombre que le dimos al DIV */
+      }</script>
+
+
+    <div id="contenido" onClick="muestra_oculta('contenido')">
+      <p><b>El oído medio </b><br><br>El oído medio es una cavidad casi cuadrada, ubicada en el interior de la porción petrosa (peñasco) del hueso temporal. Es una de las tres partes del oído (siendo las otras dos: el oído externo y el oído interno), y se encuentra en la parte superior del cerebelo, entre las masas encefálicas y el tímpano.
+    </div>
+
+
+    <div class="annotation" display='none'>
+      <div>EL OÍDO MEDIO</div>
+    </div>
+
+
+    <img id="controler01" src="BOTONES-TACTILES01.png" width="220" height="350" />
+    <div class="icon3D">
+      <img id="icon3D" src="icon3D.png" />
+    </div>
+
+
+    <div slot="hotspot-hueso" class="anchor" id="n11" data-position="-46.41133026020154m 25.480883175488607m -16.42204072757186m"></div>
+    <div slot="hotspot-Membrana" class="anchor" id="n12" data-position="36.55527966799646m 6.119722094220933m -5.301901853283194m"></div>
+    <div slot="hotspot-Maleo" class="anchor" id="n13" data-position="39.956705045761936m 15.964585144135626m -3.0529711814179272m"></div>
+    <div slot="hotspot-Yunque" class="anchor" id="n14" data-position="42.8771570212756m 14.341425447329684m -5.391438537990265m"></div>
+    <div slot="hotspot-estribo" class="anchor" id="n15" data-position="37.797767823870785m 11.51673376774771m -7.928034249616044m"></div>
+    <div slot="hotspot-coclea" class="anchor" id="n16" data-position="38.03022122127525m 17.673508047607m -14.141287225697848m"></div>
+    <div slot="hotspot-canal" class="anchor" id="n17" data-position="32.071507546344584m 17.047856028998794m -3.3249817688476604m"></div>
+    <div slot="hotspot-nervio" class="anchor" id="n18" data-position="8.296831482730465m 9.76972355001213m -22.477696397289687m"></div>
+    <svg id="lines" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" class="lineContainer">
+
+      <line class="line" id="l1"></line>
+      <line class="line" id="l2"></line>
+      <line class="line" id="l3"></line>
+      <line class="line" id="l4"></line>
+      <line class="line" id="l5"></line>
+      <line class="line" id="l6"></line>
+      <line class="line" id="l7"></line>
+      <line class="line" id="l8"></line>
+    </svg>
+
+    <div id="container">
+      <button id="hueso" class="label" onmousedown="myFunctionocult()">Hueso temporal</button>
+      <button id="Membrana" class="label" onmousedown="myFunctionocult02()">Membrana timpánica</button>
+      <button id="Maleo" class="label" onmousedown="myFunctionocult03()">Maleo</button>
+      <button id="Yunque" class="label" onmousedown="myFunctionocult04()">Yunque</button>
+      <button id="estribo" class="label" onmousedown="myFunctionocult05()">Estribo</button>
+      <button id="coclea" class="label" onmousedown="myFunctionocult06()">Cóclea</button>
+      <button id="canal" class="label" onmousedown="myFunctionocult07()">Canales semicirculares</button>
+      <button id="nervio" class="label" onmousedown="myFunctionocult08()">Nervio vestibulococlear</button>
+      </div>
+
+    <button class="Hotspot" id="n1" slot="hotspot-1" data-position="-46.41133026020154m 25.480883175488607m -16.42204072757186m"
+      onmousedown="myFunction()" data-visibility-attribute="visible"></button>
+    <button class="Hotspot" id="n2" slot="hotspot-2" data-position="36.55527966799646m 6.119722094220933m -5.301901853283194m"
+      onmousedown="myFunction02();" data-visibility-attribute="visible"></button>
+    <button class="Hotspot" id="n3" slot="hotspot-3" data-position="39.956705045761936m 15.964585144135626m -3.0529711814179272m"
+      onmousedown="myFunction03();" data-visibility-attribute="visible"></button>
+    <button class="Hotspot" id="n4" slot="hotspot-4" data-position="42.8771570212756m 14.341425447329684m -5.391438537990265m"
+      onmousedown="myFunction04();" data-visibility-attribute="visible"></button>
+    <button class="Hotspot" id="n5" slot="hotspot-5" data-position="37.797767823870785m 11.51673376774771m -7.928034249616044m"
+      onmousedown="myFunction05();" data-visibility-attribute="visible"></button>
+    <button class="Hotspot" id="n6" slot="hotspot-6" data-position="38.03022122127525m 17.673508047607m -14.141287225697848m"
+      onmousedown="myFunction06();" data-visibility-attribute="visible"></button>
+    <button class="Hotspot" id="n7" slot="hotspot-7" data-position="32.071507546344584m 17.047856028998794m -3.3249817688476604m"
+      onmousedown="myFunction07();" data-visibility-attribute="visible"></button>
+    <button class="Hotspot" id="n8" slot="hotspot-8" data-position="8.296831482730465m 9.76972355001213m -22.477696397289687m"
+      onmousedown="myFunction08();" data-visibility-attribute="visible"></button>
+
+
+    <audio loop id="sound" src="Heartbeat sound30s.mp3" type="audio/mpeg" style="position: absolute;">Tu navegador no
+      soporta el elemento audio.</audio>
+
+    <div id="fullscreen-button"><img src="address-pointerbb.png"
+        style="width: 4%; position: fixed; left: 5%; bottom: 10%; max-width: 20%" /></div>
+
+
+    
+
+
+    <button class="boton001" id="toggle-button01" onclick="ocultarMostrarElementos(), ocultarMostrarElementos1() 
+        " style="background-color: #d3d3d37e; align-content: center;  border-width: 1px; position: absolute; bottom:
+         15em; right: 5em; color: #0c204d; padding: 5px; border-radius: 5px; font-size: 10px; width: 150px;">
+      <img id="eye" src="eye_hide_icon01.png" style="transition: transform .2s; width: 25px; display: inline-block;">
+      <br>Mostrar / Ocultar etiquetas
+    </button>
+
+
+
+    <script>
+
+      function ocultarMostrarElementos() {
+        var elementos = document.getElementsByClassName("label");
+        for (var i = 0; i < elementos.length; i++) {
+          if (elementos[i].style.visibility === "hidden") {
+            elementos[i].style.visibility = "visible";
+          } else {
+            elementos[i].style.visibility = "hidden";
+          }
+        }
+      }
+      function ocultarMostrarElementos1() {
+        var elementos = document.getElementsByClassName("line");
+        for (var i = 0; i < elementos.length; i++) {
+          if (elementos[i].style.visibility === "hidden") {
+            elementos[i].style.visibility = "visible";
+          } else {
+            elementos[i].style.visibility = "hidden";
+          }
+        }
+      }
+
+    </script>
+
+
+
+  
+
+<div class="button-container">
+  <button id="variant-button" onclick="changeVariant('SOLIDO')" style=" font-family:helvetica;
+  font-size:11px;
+  font-weight: bold;
+  color: #0A5976; gap: 10px;">Mostrar huesos</button>
+   <button id="variant-button" onclick="changeVariant('Default')" style=" font-family:helvetica;
+   font-size:11px;
+   font-weight: bold;
+   color: #0A5976; gap: 10px;">Oculltar huesos</button>
+</div>
+
+
+
+<script>
+  const modelViewerVariants = document.querySelector("model-viewer#animation-demo");
+
+  function changeVariant(variantName) {
+    modelViewerVariants.variantName = variantName;
+  }
+</script>
+
+
+
+
+    <script type="module">
+      const modelViewer1 = document.querySelector('#animation-demo');
+      const lines = modelViewer1.querySelectorAll('line');
+      let baseRect;
+      let huesoRect;
+      let MembranaRect;
+      let MaleoRect;
+      let YunqueRect;
+      let estriboRect;
+      let cocleaRect;
+      let canalRect;
+      let nervioRect;
+
+      function onResize() {
+        baseRect = modelViewer1.getBoundingClientRect();
+        huesoRect = document.querySelector('#hueso').getBoundingClientRect();
+        MembranaRect = document.querySelector('#Membrana').getBoundingClientRect();
+        MaleoRect = document.querySelector('#Maleo').getBoundingClientRect();
+        YunqueRect = document.querySelector('#Yunque').getBoundingClientRect();
+        estriboRect = document.querySelector('#estribo').getBoundingClientRect();
+        cocleaRect = document.querySelector('#coclea').getBoundingClientRect();
+        canalRect = document.querySelector('#canal').getBoundingClientRect();
+        nervioRect = document.querySelector('#nervio').getBoundingClientRect();
+      }
+
+      modelViewer1.addEventListener('ar-status', onResize);
+
+      modelViewer1.addEventListener('load', () => {
+        onResize();
+        // update svg
+        function drawLine(svgLine, name, rect) {
+          const hotspot = modelViewer1.queryHotspot('hotspot-' + name);
+          svgLine.setAttribute('x1', hotspot.canvasPosition.x);
+          svgLine.setAttribute('y1', hotspot.canvasPosition.y);
+          svgLine.setAttribute('x2', (rect.left + rect.right) / 2 - baseRect.left);
+          svgLine.setAttribute('y2', rect.top - baseRect.top);
+        }
+
+        // use requestAnimationFrame to update with renderer
+        const startSVGRenderLoop = () => {
+          drawLine(lines[0], 'hueso', huesoRect);
+          drawLine(lines[1], 'Membrana', MembranaRect);
+          drawLine(lines[2], 'Maleo', MaleoRect);
+          drawLine(lines[3], 'Yunque', YunqueRect);
+          drawLine(lines[4], 'estribo', estriboRect);
+          drawLine(lines[5], 'coclea', cocleaRect);
+          drawLine(lines[6], 'canal', canalRect);
+          drawLine(lines[7], 'nervio', nervioRect);
+          requestAnimationFrame(startSVGRenderLoop);
+        };
+
+        startSVGRenderLoop();
+      });
+    </script>
+
+
+    <script>
+      document.querySelector('#button-load').addEventListener('click',
+        () => document.querySelector('#animation-demo').dismissPoster());
+    </script>
+
+
+    <script>
+
+      function myFunction() {
+        var x = document.getElementById("hueso");
+        var y = document.getElementById("l1");
+        if (x.style.visibility === "hidden") {
+          x.style.visibility = "visible";
+          y.style.visibility = "visible";
+        } else {
+          x.style.visibility = "hidden";
+          y.style.visibility = "hidden";
+        }
+      }
+    </script>
+
+    <script>
+
+      function myFunctionocult() {
+        var x = document.getElementById("hueso");
+        var y = document.getElementById("l1");
+        if (x.style.visibility === "hidden") {
+          x.style.visibility = "visible";
+          y.style.visibility = "visible";
+        } else {
+          x.style.visibility = "hidden";
+          y.style.visibility = "hidden";
+        }
+      }
+
+    </script>
+
+    <script>
+
+      function myFunctionocult02() {
+        var x = document.getElementById("Membrana");
+        var y = document.getElementById("l2");
+        if (x.style.visibility === "hidden") {
+          x.style.visibility = "visible";
+          y.style.visibility = "visible";
+        } else {
+          x.style.visibility = "hidden";
+          y.style.visibility = "hidden";
+        }
+      }
+    </script>
+
+    <script>
+      function myFunction02() {
+        var x = document.getElementById("Membrana");
+        var y = document.getElementById("l2");
+        if (x.style.visibility === "hidden") {
+          x.style.visibility = "visible";
+          y.style.visibility = "visible";
+        } else {
+          x.style.visibility = "hidden";
+          y.style.visibility = "hidden";
+        }
+      }
+    </script>
+
+    <script>
+
+      function myFunctionocult03() {
+        var x = document.getElementById("Maleo");
+        var y = document.getElementById("l3");
+        if (x.style.visibility === "hidden") {
+          x.style.visibility = "visible";
+          y.style.visibility = "visible";
+        } else {
+          x.style.visibility = "hidden";
+          y.style.visibility = "hidden";
+        }
+      }
+    </script>
+
+    <script>
+      function myFunction03() {
+        var x = document.getElementById("Maleo");
+        var y = document.getElementById("l3");
+        if (x.style.visibility === "hidden") {
+          x.style.visibility = "visible";
+          y.style.visibility = "visible";
+        } else {
+          x.style.visibility = "hidden";
+          y.style.visibility = "hidden";
+        }
+      }
+
+
+    </script>
+
+<script>
+
+  function myFunctionocult04() {
+    var x = document.getElementById("Yunque");
+    var y = document.getElementById("l4");
+    if (x.style.visibility === "hidden") {
+      x.style.visibility = "visible";
+      y.style.visibility = "visible";
+    } else {
+      x.style.visibility = "hidden";
+      y.style.visibility = "hidden";
+    }
+  }
+</script>
+
+<script>
+  function myFunction04() {
+    var x = document.getElementById("Yunque");
+    var y = document.getElementById("l4");
+    if (x.style.visibility === "hidden") {
+      x.style.visibility = "visible";
+      y.style.visibility = "visible";
+    } else {
+      x.style.visibility = "hidden";
+      y.style.visibility = "hidden";
+    }
+  }
+</script>
+
+<script>
+
+  function myFunctionocult05() {
+    var x = document.getElementById("estribo");
+    var y = document.getElementById("l5");
+    if (x.style.visibility === "hidden") {
+      x.style.visibility = "visible";
+      y.style.visibility = "visible";
+    } else {
+      x.style.visibility = "hidden";
+      y.style.visibility = "hidden";
+    }
+  }
+</script>
+
+<script>
+  function myFunction05() {
+    var x = document.getElementById("estribo");
+    var y = document.getElementById("l5");
+    if (x.style.visibility === "hidden") {
+      x.style.visibility = "visible";
+      y.style.visibility = "visible";
+    } else {
+      x.style.visibility = "hidden";
+      y.style.visibility = "hidden";
+    }
+  }
+</script>
+
+<script>
+
+  function myFunctionocult06() {
+    var x = document.getElementById("coclea");
+    var y = document.getElementById("l6");
+    if (x.style.visibility === "hidden") {
+      x.style.visibility = "visible";
+      y.style.visibility = "visible";
+    } else {
+      x.style.visibility = "hidden";
+      y.style.visibility = "hidden";
+    }
+  }
+</script>
+
+<script>
+  function myFunction06() {
+    var x = document.getElementById("coclea");
+    var y = document.getElementById("l6");
+    if (x.style.visibility === "hidden") {
+      x.style.visibility = "visible";
+      y.style.visibility = "visible";
+    } else {
+      x.style.visibility = "hidden";
+      y.style.visibility = "hidden";
+    }
+  }
+</script>
+
+<script>
+
+  function myFunctionocult07() {
+    var x = document.getElementById("canal");
+    var y = document.getElementById("l7");
+    if (x.style.visibility === "hidden") {
+      x.style.visibility = "visible";
+      y.style.visibility = "visible";
+    } else {
+      x.style.visibility = "hidden";
+      y.style.visibility = "hidden";
+    }
+  }
+</script>
+
+<script>
+  function myFunction07() {
+    var x = document.getElementById("canal");
+    var y = document.getElementById("l7");
+    if (x.style.visibility === "hidden") {
+      x.style.visibility = "visible";
+      y.style.visibility = "visible";
+    } else {
+      x.style.visibility = "hidden";
+      y.style.visibility = "hidden";
+    }
+  }
+</script>
+
+<script>
+
+  function myFunctionocult08() {
+    var x = document.getElementById("nervio");
+    var y = document.getElementById("l8");
+    if (x.style.visibility === "hidden") {
+      x.style.visibility = "visible";
+      y.style.visibility = "visible";
+    } else {
+      x.style.visibility = "hidden";
+      y.style.visibility = "hidden";
+    }
+  }
+</script>
+
+<script>
+  function myFunction08() {
+    var x = document.getElementById("nervio");
+    var y = document.getElementById("l8");
+    if (x.style.visibility === "hidden") {
+      x.style.visibility = "visible";
+      y.style.visibility = "visible";
+    } else {
+      x.style.visibility = "hidden";
+      y.style.visibility = "hidden";
+    }
+  }
+</script>
+
+
+    <script>
+      var audio = document.getElementById("sound");
+      var boton = document.getElementById("botonp");
+
+      function togglePlayPause2() {
+        if (audio.paused) {
+          audio.play();
+          boton.innerHTML = "Pausar";
+        } else {
+          audio.pause();
+          boton.innerHTML = "Reproducir";
+        }
+      }
+    </script>
+    <script>
+
+      var modelo = document.getElementById("animation-demo");
+      var boton = document.getElementById("botonp");
+
+      function togglePlayPause() {
+        if (modelo.paused) {
+          modelo.play();
+          boton.innerHTML = "Pausar";
+        } else {
+          modelo.pause();
+          boton.innerHTML = "Reproducir";
+        }
+      }
+
+
+    </script>
+    <script>
+      var fullscreenButton = document.getElementById("fullscreen-button");
+      var elementToFullscreen = document.getElementById("animation-demo");
+
+      fullscreenButton.addEventListener("click", function () {
+        if (elementToFullscreen.requestFullscreen) {
+          elementToFullscreen.requestFullscreen();
+        } else if (elementToFullscreen.webkitRequestFullscreen) { /* Safari */
+          elementToFullscreen.webkitRequestFullscreen();
+        } else if (elementToFullscreen.msRequestFullscreen) { /* IE11 */
+          elementToFullscreen.msRequestFullscreen();
+        }
+      });
+
+      var fullscreenButton = document.getElementById('fullscreen-button');
+      fullscreenButton.addEventListener('click', () => {
+        if (document.fullscreenElement) {
+          document.exitFullscreen();
+        } else {
+          document.documentElement.requestFullscreen();
+        }
+      });
+    </script>
+
+
+
+  </model-viewer>
+  <!-- Loads <model-viewer> for browsers: -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.0.1/model-viewer.min.js"></script>
+</body>
+
+</html>
